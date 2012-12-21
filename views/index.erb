@@ -43,16 +43,11 @@
        </a>
        <a class="brand" href="/">Emacs</a>
        <div class="nav-collapse" id="main-menu">
-        <ul class="nav" id="main-menu-left">
-          <li><a href="<%= @twitter %>">Twitter</a></li>
-          <li><a href="<%= @facebook %>">Facebook</a></li>
-          <li><a href="<%= @google_plus %>">Google+</a></li>
-        </ul>
         <form class="navbar-search pull-left" action="/search">
           <input type="text" name="s" class="search-query span2" placeholder="Search" value="<%= params[:s] %>">
         </form>
         <ul class="nav pull-right" id="main-menu-right">
-          <li><a rel="tooltip" target="_blank" href="<%= @github %>" title="Fork me on Github">Github <i class="icon-share-alt"></i></a></li>
+          <li><a rel="tooltip" target="_blank" href="<%= ENV['GITHUB'] %>" title="Fork me on Github">Github <i class="icon-share-alt"></i></a></li>
         </ul>
        </div>
      </div>
@@ -67,7 +62,7 @@
   <div class="row">
     <div class="span6">
       <h1>GNU Emacs</h1>
-      <p class="lead">This is a search site for <a href="http://www.gnu.org/software/emacs">http://www.gnu.org/software/emacs</a>.</p>
+      <p class="lead">An extensible, customizable text editor—and more.</p>
     </div>
     <div class="span6">
       <div class="bsa well">
@@ -75,13 +70,13 @@
           <div class="bsa_it one">
             <div>
               <span class="bsa_it_i">
-                <%= link_to image_tag(avatar_url, :size => "20x20"), @about_me, :class => "navbar-link" %>
+                <%= link_to image_tag(avatar_url, :size => "20x20"), ENV['ABOUT_ME'], :class => "navbar-link" %>
               </span>
               <span class="bsa_it_t">Software Engineer</span>
             </div>
           </div>
         </div>
-        <div class="clearfix"><a href="<%= @about_me %>" id="bsap_aplink">about me</div>
+        <div class="clearfix"><a href="<%= ENV['ABOUT_ME'] %>" id="bsap_aplink">about me</div>
       </div>
     </div>
   </div>
@@ -101,9 +96,7 @@
     <div class="span12">
       <div class="alert alert-error">
         <a class="close" data-dismiss="alert">&times;</a>
-        <strong>
-          GNU Emacs
-        </strong> is an extensible, customizable text editor—and more.
+        <strong>Emacs</strong> includes special features to help you write in many different human languages and programming/markup languages.
       </div>
     </div>
     <% @scripts[:site_text].size.times do |i| %>
@@ -137,12 +130,14 @@
       <footer id="footer">
         <p class="pull-right"><a href="#">Back to top</a></p>
         <div class="links">
-          Made by <a target="_blank" href="<%= @about_me %>">zhangjingqiang</a>
-          Contact him <a href="mailto:<%= @email %>"><%= @email %></a><br/>
-          Based on <a target="_blank" href="http://bootswatch.com">Bootswatch</a>
-          Hosted on <a target="_blank" href="http://www.heroku.com">Heroku</a>
-          Powered by <a target="_blank" href="http://www.sinatrarb.com">Sinatra</a>
+          <a href="<%= ENV['TWITTER'] %>">Twitter</a>
+          <a href="<%= ENV['FACEBOOK'] %>">Facebook</a>
+          <a href="<%= ENV['GOOGLE_PLUS'] %>">Google+</a>
         </div>
+        Made by <a target="_blank" href="<%= ENV['ABOUT_ME'] %>">zhangjingqiang</a><br/>
+        Based on <a target="_blank" href="http://bootswatch.com">Bootswatch</a>
+        Hosted on <a target="_blank" href="http://www.heroku.com">Heroku</a>
+        Powered by <a target="_blank" href="http://www.sinatrarb.com">Sinatra</a>
       </footer>
 
     </div><!-- /container -->
